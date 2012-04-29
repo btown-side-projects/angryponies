@@ -1,0 +1,17 @@
+{
+  "name": "Angry Ponies",
+  "version": "0.0",
+  "manifest_version": 2,
+  "description": "Angry Ponies",
+  "permissions": [
+    "tabs",
+    "http://chrome.angrybirds.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://chrome.angrybirds.com/*"],
+      "js": ["inject.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
