@@ -51,4 +51,4 @@ do ->
     window.fetchedUrls.push(url)
     newUrl = remapUrl(url)
     # console.log url, newUrl
-    return this.realOpen(method, url, async, user, pass)
+    return this.realOpen(method, newUrl, async, user, pass)

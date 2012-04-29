@@ -68,7 +68,7 @@
       var newUrl;
       window.fetchedUrls.push(url);
       newUrl = remapUrl(url);
-      return this.realOpen(method, url, async, user, pass);
+      return this.realOpen(method, newUrl, async, user, pass);
     };
   })();
 
