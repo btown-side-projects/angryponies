@@ -5,17 +5,23 @@
 
   window.PONIFY_LOADED = true;
 
-  HOST = window.PONIFY_HOST;
+  HOST = "http://angryponies.herokuapp.com";
+
+  console.log("Angry Ponies: remapping to " + HOST);
 
   remaps = {
-    'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/
+    'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/,
+    'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/
   };
 
   remapUrl = function(url) {
-    var path, regex;
+    var newUrl, path, regex;
     for (path in remaps) {
       regex = remaps[path];
-      if (regex.test(url)) return HOST + '/' + path;
+      if (regex.test(url)) {
+        newUrl = HOST + '/' + path;
+        console.log("Remapping " + url + " to " + newUrl);
+      }
     }
     return url;
   };
@@ -30,8 +36,7 @@
         for (_i = 0, _len = imgs.length; _i < _len; _i++) {
           img = imgs[_i];
           newSrc = remapUrl(img.src);
-          console.log(img.src, newSrc);
-          img.src = newSrc;
+          if (img.src !== newSrc) img.src = newSrc;
         }
         return imgs = [];
       }
@@ -57,7 +62,6 @@
     return proto.open = function(method, url, async, user, pass) {
       var newUrl;
       newUrl = remapUrl(url);
-      console.log(url, newUrl);
       return this.realOpen(method, url, async, user, pass);
     };
   })();
