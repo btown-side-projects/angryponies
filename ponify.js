@@ -21,6 +21,7 @@
       if (regex.test(url)) {
         newUrl = HOST + '/' + path;
         console.log("Remapping " + url + " to " + newUrl);
+        return newUrl;
       }
     }
     return url;
