@@ -5,7 +5,7 @@
 
   window.PONIFY_LOADED = true;
 
-  HOST = 'http://localhost:5000/';
+  HOST = window.PONIFY_HOST;
 
   remaps = {
     'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/
@@ -15,7 +15,7 @@
     var path, regex;
     for (path in remaps) {
       regex = remaps[path];
-      if (regex.test(url)) return HOST + path;
+      if (regex.test(url)) return HOST + '/' + path;
     }
     return url;
   };

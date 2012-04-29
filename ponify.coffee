@@ -2,7 +2,7 @@ if window.PONIFY_LOADED
   return
 window.PONIFY_LOADED = true
 
-HOST = 'http://localhost:5000/'
+HOST = window.PONIFY_HOST
 
 remaps =
   'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/
@@ -12,7 +12,7 @@ remapUrl = (url) ->
   # return HOST + '/assets/' + rest
   for path, regex of remaps
     if regex.test url
-      return HOST + path
+      return HOST + '/' + path
   return url
 
 imgs = []
