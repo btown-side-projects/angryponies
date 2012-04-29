@@ -11,7 +11,8 @@
 
   remaps = {
     'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/,
-    'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/
+    'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/,
+    'sounds/twilightswear.mp3': /Bird_Red_Flying/
   };
 
   remapUrl = function(url) {
