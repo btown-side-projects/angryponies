@@ -22,10 +22,13 @@ remapUrl = (url) ->
 
 imgs = []
 
+window.fetchedUrls = []
+
 do ->
   laterRemapper = ->
     if imgs.length
       for img in imgs
+        window.fetchedUrls.push(img.src)
         newSrc = remapUrl(img.src)
         if img.src != newSrc
           img.src = newSrc
@@ -44,6 +47,7 @@ do ->
   proto = XMLHttpRequest.prototype
   proto.realOpen = proto.open
   proto.open = (method, url, async, user, pass) ->
+    window.fetchedUrls.push(url)
     newUrl = remapUrl(url)
     # console.log url, newUrl
     return this.realOpen(method, url, async, user, pass)

@@ -29,6 +29,8 @@
 
   imgs = [];
 
+  window.fetchedUrls = [];
+
   (function() {
     var laterRemapper;
     laterRemapper = function() {
@@ -36,6 +38,7 @@
       if (imgs.length) {
         for (_i = 0, _len = imgs.length; _i < _len; _i++) {
           img = imgs[_i];
+          window.fetchedUrls.push(img.src);
           newSrc = remapUrl(img.src);
           if (img.src !== newSrc) img.src = newSrc;
         }
@@ -62,6 +65,7 @@
     proto.realOpen = proto.open;
     return proto.open = function(method, url, async, user, pass) {
       var newUrl;
+      window.fetchedUrls.push(url);
       newUrl = remapUrl(url);
       return this.realOpen(method, url, async, user, pass);
     };
