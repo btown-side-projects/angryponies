@@ -1,7 +1,9 @@
 {
   "name": "angryponies",
   "version": "0.0.1",
-  "dependencies": [],
+  "dependencies": {
+    "express": "*"
+  },
   "engines": {
     "node": "0.6.x",
     "npm": "1.1.9"
