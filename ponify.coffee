@@ -2,7 +2,8 @@ if window.PONIFY_LOADED
   return
 window.PONIFY_LOADED = true
 
-HOST = location.hash?.substring(1) || "http://angryponies.herokuapp.com"
+# This is the cloudfront endpoint for angryponies.herokuapp.com
+HOST = location.hash?.substring(1) || "http://daxq60ud3wnx1.cloudfront.net"
 
 console.log "Angry Ponies: remapping to #{HOST}"
 

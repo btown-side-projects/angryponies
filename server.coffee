@@ -2,13 +2,15 @@ express = require 'express'
 
 app = express.createServer()
 
+maxAge = 120000 # milliseconds, 1 minute
+
 app.configure ->
   app.use express.logger 'short'
   app.use (req, res, next) ->
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "X-Requested-With")
     next()
-  app.use express.static __dirname
+  app.use express.static __dirname, {maxAge: 120000}
   app.use app.router
   app.use express.errorHandler
 

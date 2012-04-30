@@ -5,7 +5,7 @@
 
   window.PONIFY_LOADED = true;
 
-  HOST = ((_ref = location.hash) != null ? _ref.substring(1) : void 0) || "http://angryponies.herokuapp.com";
+  HOST = ((_ref = location.hash) != null ? _ref.substring(1) : void 0) || "http://daxq60ud3wnx1.cloudfront.net";
 
   console.log("Angry Ponies: remapping to " + HOST);
 

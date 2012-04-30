@@ -1,9 +1,11 @@
 (function() {
-  var app, express, port;
+  var app, express, maxAge, port;
 
   express = require('express');
 
   app = express.createServer();
+
+  maxAge = 120000;
 
   app.configure(function() {
     app.use(express.logger('short'));
@@ -12,7 +14,9 @@
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
       return next();
     });
-    app.use(express.static(__dirname));
+    app.use(express.static(__dirname, {
+      maxAge: 120000
+    }));
     app.use(app.router);
     return app.use(express.errorHandler);
   });

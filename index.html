@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angry Ponies for Google Chrome</title>
+    <title>Angry Ponies PRE-ALPHA DEMO</title>
     <link rel="stylesheet" type="text/css" href="site/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="site/bootstrap-responsive.min.css">
     <style type="text/css">
@@ -38,8 +38,8 @@
         <p>
           <img id="title" src="images/title.png" alt="Angry Ponies" />
         </p>
-        <h1>Angry Ponies <small>for Google Chrome</small></h1>
-        <p>Angry Birds, but 20% cooler</p>
+        <h1>Angry Ponies <small>PRE-ALPHA DEMO</small></h1>
+        <p>Angry Birds, but 20% cooler. For Google Chrome and Firefox.</p>
       </header>
       <p>
         <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
@@ -55,10 +55,13 @@
         </a>
       </p>
       <p>
-        Chubby pony graphics from <a id="artist0" href="http://phantomdarklover.deviantart.com/gallery/#/d4bdizq">PhantomDarkLover</a> and <a id="artist1" href="http://willdrawforfood1.deviantart.com/art/Chrysallis-Chubbie-298667674">WillDrawForFood</a>. Code released to the public domain.
+        Chubby pony graphics from <a id="artist0" href="http://phantomdarklover.deviantart.com/gallery/#/d4bdizq">PhantomDarkLover</a> and <a id="artist1" href="http://willdrawforfood1.deviantart.com/art/Chrysallis-Chubbie-298667674">WillDrawForFood</a>. Intro music by <a href="http://www.youtube.com/watch?v=2R677MV--WI">Alex S</a>. Code released to the public domain.
       </p>
       <p>
-        If you'd like to contribute artwork or sound design to make this more awesome (please do!), or would like to port the extension to a different browser, all instructions on how to contribute are at <a href="https://github.com/bpartridge/angryponies#angry-ponies" id="git-inline">Github</a>.
+        This is just a technical demo for what kinds of mods are possible. There are still a lot of birds and pigs to make into ponies and changelings!
+      </p>
+      <p>
+        If you'd like to contribute artwork or sound design to make this more awesome (please do!), or would like to port the extension to a different browser, all instructions on how to contribute are at <a href="https://github.com/bpartridge/angryponies#angry-ponies" id="git-inline">Github</a>. Instructions for non-technical bronies as well!
       </p>
       <p>
         <h3>Screenshots</h3>
@@ -77,9 +80,11 @@
     <a href="https://github.com/bpartridge/angryponies" id="git-banner"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
 
     <script type="text/javascript">
-      document.getElementById("play").setAttribute("href", 
-        "http://chrome.angrybirds.com#" + 
-        (location.protocol + '//' + location.host));
+      if (location.host != "angryponies.herokuapp.com") {
+        document.getElementById("play").setAttribute("href", 
+          "http://chrome.angrybirds.com#" + 
+          (location.protocol + '//' + location.host));
+      }
     </script>
   </body>
 </html>
