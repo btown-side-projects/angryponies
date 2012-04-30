@@ -11,7 +11,7 @@
       img.screenshot {height:150px;}
       /*footer {position: fixed; bottom: 5px;}*/
       footer > * {margin-right: 10px;}
-      footer img {height: 31px;}
+      footer img {height: 20px;}
     </style>
     <script type="text/javascript">
       (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
@@ -50,7 +50,7 @@
         </a>
       </p>
       <p>
-        <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com">
+        <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com" target="_blank">
           Step 2: Play Angry Ponies!
         </a>
       </p>
@@ -69,12 +69,27 @@
         <img class="screenshot" src="screenshots/screen1.jpg" />
         <img class="screenshot" src="screenshots/screen2.jpg" />
       </p>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript">
+          var disqus_shortname = 'angryponies';
+          if (!/localhost/.test(location.host)) {
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+          }
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
       <footer>
         Powered by:
         <a href="http://coffeescript.org"><img src="http://coffeescript.org/documentation/images/logo.png" /></a>
         <a href="http://nodejs.org"><img src="http://nodeblog.files.wordpress.com/2011/07/nodejs.png?w=520&h=178"/></a>
         <a href="http://heroku.com"><img src="http://logos.heroku.com/images/heroku-logo-light-88x31.png"/></a>
         <a href="https://mixpanel.com/f/partner"><img src="https://mixpanel.com/site_media/images/partner/badge_light.png" alt="Mobile and Web Analytics"/></a>
+        <a href="http://disqus.com"><img src="http://mediacdn.disqus.com/1335552563/img/disqus-logo.png"/></a>
+        <a href="http://aws.amazon.com/cloudfront/"><img src="http://www.commoncrawl.org/wp-content/uploads/2012/01/AWS_LOGO_CMYK.png"/></a>
       </footer>
     </div>
     <a href="https://github.com/bpartridge/angryponies" id="git-banner"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
