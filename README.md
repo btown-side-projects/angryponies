@@ -17,7 +17,11 @@ Angry Ponies runs on Node.js, with Heroku-compatible deployment scripts. To run 
 
 ### Technical Details
 
-Angry Ponies uses a novel technique to intercept all asynchronous HTTP calls, including image tags. Like many HTML5 Canvas games, Angry Birds Chrome loads images to draw to a canvas by setting `img.src` on objects from `new Image(w,h)` or `document.createElement('img')`. While the constructors can be overloaded, there's no (reliable) information at constuction time to determine which element is which, and defining custom setters and getters for `src` can break the browser's drawing code. However, by overloading the constructors to add those objects to a queue, then remapping elements in the queue on the next event tick, the sources can be reset after they are first set to the original content, allowing remapping. Similarly, `XmlHttpRequest.prototype.open` can be remapped for JSON and media requests. Then, to allow cross-origin resource sharing, we set `Access-Control-Allow-Origin` to `*` as described [here][7].
+Angry Ponies uses a novel technique to intercept all asynchronous HTTP calls, including image tags. Like many HTML5 Canvas games, Angry Birds Chrome loads images to draw to a canvas by setting `img.src` on objects from `new Image(w,h)` or `document.createElement('img')`. While the constructors can be overloaded, there's no (reliable) information at constuction time to determine which element is which, and defining custom setters and getters for `src` can break the browser's drawing code. However, by overloading the constructors to add those objects to a queue, then remapping elements in the queue on the next event tick, the sources can be reset after they are first set to the original content, allowing remapping. Similarly, `XmlHttpRequest.prototype.open` can be remapped for JSON and sound requests (on Chrome). Then, to allow cross-origin resource sharing, we set `Access-Control-Allow-Origin` to `*` as described [here][7].
+
+For Firefox, Flash is used to load audio, so simply overriding XHR will not suffice. Angry Birds uses the [GWT-Voices][8] library, which we augment by overriding `document.createElement('object')` and `document.createElement('param')` to use our own SWF and allow all domains. To compile `flash/CustomVoices.as`, download the Flex SDK and invoke `/path-to-flex-sdk/bin/mxmlc flash/CustomVoices.as -static-link-runtime-shared-libraries=true -debug=true`. A compiled version is provided.
+
+A Firefox extension can be generated automatically using the service at [Extension Factory][9].
 
 [1]: http://angryponies.herokuapp.com
 [2]: http://chrome.angrybirds.com
@@ -26,3 +30,5 @@ Angry Ponies uses a novel technique to intercept all asynchronous HTTP calls, in
 [5]: https://github.com/bpartridge/angryponies/blob/master/images/INGAME_BIRDS_ponies.png
 [6]: https://github.com/bpartridge/angryponies/issues/new
 [7]: http://enable-cors.org/#how-expressJS
+[8]: http://code.google.com/p/gwt-voices/
+[9]: http://www.extensionfactory.com/labs/conversion/

@@ -1,5 +1,5 @@
 (function() {
-  var HOST, imgs, remapUrl, remaps, _ref;
+  var HOST, imgs, objs, remapUrl, remaps, _ref;
 
   if (window.PONIFY_LOADED) return;
 
@@ -12,7 +12,9 @@
   remaps = {
     'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/,
     'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/,
-    'sounds/twilightswear.mp3': /Bird_Red_Flying/
+    'sounds/twilightswear.mp3': /Bird_Red_Flying/,
+    'sounds/alexsglitch.mp3': /theme\.mp3/,
+    'flash/CustomVoices.swf': /oices\.swf/
   };
 
   remapUrl = function(url) {
@@ -28,7 +30,11 @@
     return url;
   };
 
+  window.remapSound = remapUrl;
+
   imgs = [];
+
+  objs = [];
 
   window.fetchedUrls = [];
 
@@ -53,9 +59,20 @@
     var oldCreateElement;
     oldCreateElement = document.createElement;
     return document.createElement = function(type) {
-      var elem;
+      var access, elem;
       elem = oldCreateElement.call(document, type);
       if (type === 'img') imgs.push(elem);
+      if (type === 'object') {
+        access = document.createElement('param');
+        access.setAttribute('name', 'allowScriptAccess');
+        access.setAttribute('value', 'always');
+        elem.appendChild(access);
+        elem.oldSetAttribute = elem.setAttribute;
+        elem.setAttribute = function(key, value) {
+          if (key === 'data') value = remapUrl(value);
+          return elem.oldSetAttribute(key, value);
+        };
+      }
       return elem;
     };
   })();
