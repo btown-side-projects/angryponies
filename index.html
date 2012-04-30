@@ -75,7 +75,8 @@
 
     <script type="text/javascript">
       document.getElementById("play").setAttribute("href", 
-        "http://chrome.angrybirds.com#" + location.origin);
+        "http://chrome.angrybirds.com#" + 
+        (location.protocol + '//' + location.host));
     </script>
   </body>
 </html>
