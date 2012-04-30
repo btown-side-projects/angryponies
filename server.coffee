@@ -1,6 +1,5 @@
 express = require 'express'
 
-
 app = express.createServer()
 
 app.configure ->
@@ -20,4 +19,5 @@ app.all '/', (req, res, next) ->
 app.all '*', (req, res, next) ->
   res.send '', 404
 
-app.listen(process.env.PORT || 3000)
+app.listen(port = process.env.PORT || 5000)
+console.log "Listening on #{port}"

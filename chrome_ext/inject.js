@@ -4,4 +4,5 @@ function addScript(host, path) {
   (document.body || document.head || document.documentElement).appendChild(script);
 }
 
-addScript("http://angryponies.herokuapp.com", "ponify.js")
+HOST = (location.hash ? location.hash.substring(1) : undefined) || "http://angryponies.herokuapp.com"
+addScript(HOST, "ponify.js")

@@ -7,24 +7,62 @@
     <link rel="stylesheet" type="text/css" href="site/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="site/bootstrap-responsive.min.css">
     <style type="text/css">
-      * {padding-bottom: 5px; padding-top: 5px;}
+      * {padding-bottom: 10px;}
+      img.screenshot {height:150px;}
     </style>
+    <script type="text/javascript">
+      (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
+      a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
+      '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
+      b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
+      "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
+      'track_links','track_forms','register','register_once','unregister','identify',
+      'name_tag','set_config'];
+      for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
+      Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
+      )(document,[]);
+      mixpanel.init("1b8facd51b0e1f8587251d8a7825f935");
+      mixpanel.track("loaded", {referrer: document.referrer});
+      mixpanel.track_links("a", "clicked link", function(ele) {
+        return {id: ele.id, href: ele.getAttribute('href'), referrer: document.referrer};
+      });
+    </script>
   </head>
   <body>
     <div class="container">
       <header>
+        <br>
         <h1>Angry Ponies <small>for Google Chrome</small></h1>
+        <p>Angry Birds, but 20% cooler</p>
       </header>
       <p>
-        <a class="btn btn-primary" href="dist/angryponies.crx">
+        <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
           Step 1: Install the Google Chrome extension.
         </a>
       </p>
       <p>
-        <a class="btn btn-success" href="http://chrome.angrybirds.com">
+        <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com">
           Step 2: Play Angry Ponies!
         </a>
       </p>
+      <p>
+        Chubby pony graphics from <a id="artist0" href="http://phantomdarklover.deviantart.com/gallery/#/d4bdizq">PhantomDarkLover</a> and <a id="artist1" href="http://willdrawforfood1.deviantart.com/art/Chrysallis-Chubbie-298667674">WillDrawForFood</a>.
+      </p>
+      <p>
+        If you'd like to contribute artwork or sound design to make this more awesome (please do!), or would like to port the extension to a different browser, all instructions on how to contribute are at <a href="https://github.com/bpartridge/angryponies" id="git-inline">Github</a>.
+      </p>
+      <p>
+        <h3>Screenshots</h3>
+        <img class="screenshot" src="screenshots/screen0.jpg" />
+        <img class="screenshot" src="screenshots/screen1.jpg" />
+        <img class="screenshot" src="screenshots/screen2.jpg" />
+      </p>
     </div>
+    <a href="https://github.com/bpartridge/angryponies" id="git-banner"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
+
+    <script type="text/javascript">
+      document.getElementById("play").setAttribute("href", 
+        "http://chrome.angrybirds.com#" + location.origin);
+    </script>
   </body>
 </html>

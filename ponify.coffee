@@ -2,7 +2,7 @@ if window.PONIFY_LOADED
   return
 window.PONIFY_LOADED = true
 
-HOST = "http://angryponies.herokuapp.com"
+HOST = location.hash?.substring(1) || "http://angryponies.herokuapp.com"
 
 console.log "Angry Ponies: remapping to #{HOST}"
 

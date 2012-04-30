@@ -1,5 +1,5 @@
 (function() {
-  var app, express;
+  var app, express, port;
 
   express = require('express');
 
@@ -27,6 +27,8 @@
     return res.send('', 404);
   });
 
-  app.listen(process.env.PORT || 3000);
+  app.listen(port = process.env.PORT || 5000);
+
+  console.log("Listening on " + port);
 
 }).call(this);
