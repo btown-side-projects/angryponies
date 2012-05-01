@@ -28,6 +28,10 @@ remaps =
   'images/mane6.json': /INGAME_BIRDS\.json/
   'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/
   'sounds/twilightswear.mp3': /Bird_Red_Flying/
+  # 'sounds/twilightmore.mp3': /Bird_Red_Slingshot/
+  # 'sounds/twilightverysmart.mp3': /Bird_Red_Selected/
+  # 'sounds/twilighthigirls.mp3': /Bird_Red_Flying/
+  # 'sounds/twilightaah.mp3': /Bird_Red_(Collision)|(Damage)/
   'sounds/alexsglitch.mp3': /theme\.mp3/
   'flash/CustomVoices.swf': /oices\.swf/
   'images/INGAME_MENU_MAIN_MENU_pony.png': /INGAME_MENU_MAIN_MENU\.png/
