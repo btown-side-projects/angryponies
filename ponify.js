@@ -24,7 +24,8 @@
   console.log("Angry Ponies: remapping to " + HOST);
 
   remaps = {
-    'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/,
+    'images/mane6.png': /INGAME_BIRDS\.png/,
+    'images/mane6.json': /INGAME_BIRDS\.json/,
     'images/INGAME_PIGS_chrysalis.png': /INGAME_PIGS\.png/,
     'sounds/twilightswear.mp3': /Bird_Red_Flying/,
     'sounds/alexsglitch.mp3': /theme\.mp3/,
