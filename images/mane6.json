@@ -1,0 +1,571 @@
+{
+  "image": "INGAME_BIRDS.png",
+  "spriteCount": 63,
+  "sprite_0": {
+    "id": "BIRD_RED_1",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_1": {
+    "id": "BIRD_RED_2",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_2": {
+    "id": "BIRD_RED_BLINK",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_3": {
+    "id": "BIRD_RED_FLYING",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_4": {
+    "id": "BIRD_RED_FLYING_YELL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_5": {
+    "id": "BIRD_RED_YELL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_6": {
+    "id": "BIRD_RED_SPECIAL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_7": {
+    "id": "BIRD_RED_SPECIAL_2",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_8": {
+    "id": "BIRD_RED_SPECIAL_3",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_9": {
+    "id": "BIRD_REDBIG_1",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_10": {
+    "id": "BIRD_REDBIG_2",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_11": {
+    "id": "BIRD_REDBIG_BLINK",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_12": {
+    "id": "BIRD_REDBIG_FLYING",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_13": {
+    "id": "BIRD_REDBIG_FLYING_YELL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_14": {
+    "id": "BIRD_REDBIG_YELL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_15": {
+    "id": "BIRD_REDBIG_SPECIAL",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_16": {
+    "id": "BIRD_REDBIG_SPECIAL_2",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_17": {
+    "id": "BIRD_REDBIG_SPECIAL_3",
+    "x": 221,
+    "y": 10,
+    "width": 71,
+    "height": 63,
+    "pivotx": 35.5,
+    "pivoty": 31.5
+  },
+  "sprite_18": {
+    "id": "BIRD_WHITE_1",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_19": {
+    "id": "BIRD_WHITE_2",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_20": {
+    "id": "BIRD_WHITE_BLINK",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_21": {
+    "id": "BIRD_WHITE_FLYING",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_22": {
+    "id": "BIRD_WHITE_FLYING_YELL",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_23": {
+    "id": "BIRD_WHITE_YELL",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_24": {
+    "id": "BIRD_WHITE_SPECIAL",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_25": {
+    "id": "BIRD_WHITE_SPECIAL_2",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_26": {
+    "id": "BIRD_WHITE_SPECIAL_3",
+    "x": 124,
+    "y": 6,
+    "width": 92,
+    "height": 59,
+    "pivotx": 46,
+    "pivoty": 29.5
+  },
+  "sprite_27": {
+    "id": "BIRD_GREEN_1",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_28": {
+    "id": "BIRD_GREEN_2",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_29": {
+    "id": "BIRD_GREEN_BLINK",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_30": {
+    "id": "BIRD_GREEN_FLYING",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_31": {
+    "id": "BIRD_GREEN_FLYING_YELL",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_32": {
+    "id": "BIRD_GREEN_YELL",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_33": {
+    "id": "BIRD_GREEN_SPECIAL",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_34": {
+    "id": "BIRD_GREEN_SPECIAL_2",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_35": {
+    "id": "BIRD_GREEN_SPECIAL_3",
+    "x": 10,
+    "y": 2,
+    "width": 106,
+    "height": 61,
+    "pivotx": 53,
+    "pivoty": 30.5
+  },
+  "sprite_36": {
+    "id": "BIRD_BLACK_1",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_37": {
+    "id": "BIRD_BLACK_2",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_38": {
+    "id": "BIRD_BLACK_BLINK",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_39": {
+    "id": "BIRD_BLACK_FLYING",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_40": {
+    "id": "BIRD_BLACK_FLYING_YELL",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_41": {
+    "id": "BIRD_BLACK_YELL",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_42": {
+    "id": "BIRD_BLACK_SPECIAL",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_43": {
+    "id": "BIRD_BLACK_SPECIAL_2",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_44": {
+    "id": "BIRD_BLACK_SPECIAL_3",
+    "x": 25,
+    "y": 80,
+    "width": 95,
+    "height": 65,
+    "pivotx": 47.5,
+    "pivoty": 32.5
+  },
+  "sprite_45": {
+    "id": "BIRD_BLUE_1",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_46": {
+    "id": "BIRD_BLUE_2",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_47": {
+    "id": "BIRD_BLUE_BLINK",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_48": {
+    "id": "BIRD_BLUE_FLYING",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_49": {
+    "id": "BIRD_BLUE_FLYING_YELL",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_50": {
+    "id": "BIRD_BLUE_YELL",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_51": {
+    "id": "BIRD_BLUE_SPECIAL",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_52": {
+    "id": "BIRD_BLUE_SPECIAL_2",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_53": {
+    "id": "BIRD_BLUE_SPECIAL_3",
+    "x": 136,
+    "y": 96,
+    "width": 40,
+    "height": 32,
+    "pivotx": 20,
+    "pivoty": 16
+  },
+  "sprite_54": {
+    "id": "BIRD_YELLOW_1",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_55": {
+    "id": "BIRD_YELLOW_2",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_56": {
+    "id": "BIRD_YELLOW_BLINK",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_57": {
+    "id": "BIRD_YELLOW_FLYING",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_58": {
+    "id": "BIRD_YELLOW_FLYING_YELL",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_59": {
+    "id": "BIRD_YELLOW_YELL",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_60": {
+    "id": "BIRD_YELLOW_SPECIAL",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_61": {
+    "id": "BIRD_YELLOW_SPECIAL_2",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  },
+  "sprite_62": {
+    "id": "BIRD_YELLOW_SPECIAL_3",
+    "x": 200,
+    "y": 71,
+    "width": 85,
+    "height": 70,
+    "pivotx": 42.5,
+    "pivoty": 35
+  }
+}
