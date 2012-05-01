@@ -30,7 +30,9 @@
     'sounds/twilightswear.mp3': /Bird_Red_Flying/,
     'sounds/alexsglitch.mp3': /theme\.mp3/,
     'flash/CustomVoices.swf': /oices\.swf/,
-    'images/INGAME_MENU_MAIN_MENU_pony.png': /INGAME_MENU_MAIN_MENU\.png/
+    'images/INGAME_MENU_MAIN_MENU_pony.png': /INGAME_MENU_MAIN_MENU\.png/,
+    'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/,
+    'images/splash.jpg': /Splash_AB_Logo/
   };
 
   remapUrl = function(url) {
