@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Karma</title>
+    <link rel="stylesheet" type="text/css" href="../site/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../site/bootstrap-responsive.min.css">
+    <style type="text/css">
+      .container > * {padding-top: 10px;}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
+      a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
+      '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
+      b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
+      "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
+      'track_links','track_forms','register','register_once','unregister','identify',
+      'name_tag','set_config'];
+      for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
+      Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
+      )(document,[]);
+      mixpanel.init("785c339fce8f0f2e0ff20cfc20890273");
+      mixpanel.track_links("a", "clicked link");
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Pet Karma and Discentia on the head! <small>Really!</small></h1>
+      </header>
+      <p>
+        Inspired by <a id="inspiration" href="http://www.reddit.com/r/mylittlepony/comments/t2wxf/i_do_this_with_alarming_frequency/">redditor BigClifty's post</a>, but actually working in your browser!
+      </p>
+      <p>
+        <img src="http://i.imgur.com/6Qzzq.gif" height="100px" />
+      </p>
+      <p>
+        <a id="bookmarklet" class="btn btn-primary"
+          href="javascript:void((function(){var NPETS=3,MAXLEN=100,INTERVAL=100,POS_PROP='background-position',KARMA_POS='-0px -0px',DIS_POS='-55px -0px',$name=$('span.redditname a'),$img=$('#header-img'),initialName=$name.text(),initialAttrib=$img.parent().attr('title');$name.text('pet me please');$img.css(POS_PROP,DIS_POS);$img.parent().removeAttr('title');$img.mouseenter(function(){var buf=[];window.petkarmaint=setInterval(function(){var nmin=0,nmax=0,i=1,indownstroke=true,happy;buf.push(window.petkarmay);while(i<buf.length-1){if(buf[i-1]>buf[i]&&buf[i+1]>=buf[i]){nmin+=1;indownstroke=true;};if(buf[i-1]<buf[i]&&buf[i+1]<=buf[i]){nmax+=1;indownstroke=false;};i+=1;};if(nmin>=NPETS-1){window.petkarmahappy=true;$name.text('HAPPY! coded by btown_brony, vectors by Pinkie_Pi');$img.css(POS_PROP,KARMA_POS);};if(nmin<NPETS-1){window.petkarmahappy=false;$name.text(indownstroke?'pet':'...');$img.css(POS_PROP,DIS_POS);};},INTERVAL);}).mousemove(function(e){window.petkarmay=e.pageY;}).mouseleave(function(){if(window.petkarmaint){clearInterval(window.petkarmaint);window.petkarmaint=undefined;};if(!window.petkarmahappy){$name.text('you gave up...');};});})());"
+          onclick="alert('Drag me to your bookmarks bar!')">
+          Pet Karma!
+        </a>
+        &larr; Drag this to your bookmarks bar!
+      </p>
+      <p>
+        Then return to <a href="http://www.reddit.com/r/mylittlepony/" target="_blank">/r/mylittlepony</a>, click "Pet Karma!" in your bookmarks bar, and pet the sad little filly. And don't forget to upvote if you like it!
+      </p>
+      <p>
+        Code for this version by btown_brony, with original vectors by Pinkie_Pi. If you liked this, check out the <a id="source-code" href="petkarma.js">source code</a> (public domain) or my much bigger JavaScript pony project that's hosting this site, <a href="/">a pony mod of Angry Birds in your browser</a>!
+      </p>
+    </div>
+  </body>
+</html>
