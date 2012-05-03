@@ -5,6 +5,8 @@ Angry Ponies
 
 Released to the public domain by Brenton Partridge, 2012. This is a parody of Angry Birds done under fair use.
 
+If you'd like to contribute, let us know [here](https://github.com/bpartridge/angryponies/issues/1)!
+
 ### For Non-Technical Artists
 
 We need good artists and sound designers to make this 20% cooler! Namely, there are still lots of birds and pigs that should be ponies, saying pony lines and singing pony songs. Download any of the .png or .mp3 files listed in [allurls.txt][3], make any changes you want (see the difference between [INGAME_BIRDS.png][4] and [INGAME_BIRDS_ponies.png][5] for an example), and [create an issue][6] with a link to your new file. We'll incorporate them as soon as possible! 
