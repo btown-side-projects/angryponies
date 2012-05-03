@@ -26,12 +26,11 @@
                 border-radius: 5px;
         min-height: 30px;
         line-height: 30px;
-        padding-left: 10px;
-        margin-right: -10px;
       }
       .show-grid [class*="span"]:hover {
         background-color: #ddd;
       }
+      .padded {padding-left: 10px; padding-right: 10px;}
     </style>
     <script type="text/javascript">
       (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
@@ -62,44 +61,60 @@
       </header>
       <div class="row show-grid">
         <div class="span6">
-          <h2>Option 1: Browser Extension</h2>
-          <p>
-            <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
-              Step 1: Install the Google Chrome extension.
-            </a>
-            <a id="firefox_ext" class="btn btn-info" href="dist/angryponies.xpi">
-              Or the (experimental) Firefox add-on!
-            </a>
-          </p>
-          <p>
-            <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com" target="_blank" class="track">
-              Step 2: Play Angry Ponies at chrome.angrybirds.com!
-            </a>
-          </p>
+          <div class="padded">
+            <h2>Option 1: Bookmarklet</h2>
+            <p>
+              <a id="bookmarklet" class="btn btn-primary"
+                href="#need-javascript-enabled"
+                onclick="javascript:event.returnValue=false; return false;">
+                Angry Ponies!
+              </a>
+              &larr; Drag to your bookmarks bar!
+            </p>
+            <p>
+              Then, click it in your bookmarks bar twice: once on this page to go to <a id="bookmarklet_ab_link" href="#need-javascript-enabled">chrome.angrybirds.com</a>, and again as soon as that page begins to load, to refresh it with pony content!
+            </p>
+            <p>
+              <small>
+                If you're having trouble dragging the bookmarklet to your bookmarks bar, <a id="pinterest_tuts" target="angryponies_pinterest_tuts" href="http://www.youtube.com/user/pinterest/videos">Pinterest has video tutorials for all modern browsers</a>. Note that the bookmarklet may take a few seconds to work.
+              </small>
+            </p>
+          </div>
         </div>
         <div class="span6">
-          <h2>Option 2: Bookmarklet</h2>
-          <p>
-            <a id="bookmarklet" class="btn btn-primary"
-              href="#need-javascript-enabled"
-              onclick="javascript:event.returnValue=false; return false;">
-              Angry Ponies!
-            </a>
-            &larr; Drag to your bookmarks bar!
-          </p>
-          <p>
-            Then, click it in your bookmarks bar twice: once on this page to go to <a id="bookmarklet_ab_link" href="#need-javascript-enabled">chrome.angrybirds.com</a>, and again when you're there to refresh it with pony content!
-          </p>
-          <p>
-            <small>
-              If you're having trouble dragging the bookmarklet to your bookmarks bar, <a id="pinterest_tuts" target="angryponies_pinterest_tuts" href="http://www.youtube.com/user/pinterest/videos">Pinterest has video tutorials for all modern browsers</a>.
-            </small>
-          </p>
+          <div class="padded">
+            <h2>Option 2: Browser Extension</h2>
+            <p>
+              <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
+                Step 1: Install the Google Chrome extension.
+              </a>
+              <a id="firefox_ext" class="btn btn-info" href="dist/angryponies.xpi">
+                Or the (experimental) Firefox add-on!
+              </a>
+            </p>
+            <p>
+              <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com" target="_blank" class="track">
+                Step 2: Play Angry Ponies at chrome.angrybirds.com!
+              </a>
+            </p>
+            <p>
+              <small>
+                Don't worry, this extension won't do anything evil, it just inserts a script into chrome.angrybirds.com. If you're worried, feel free to browse the <a id="ext_source_code" href="https://github.com/bpartridge/angryponies/tree/master/chrome_ext">source code</a>.
+              </small>
+            </p>
+          </div>
         </div>
       </div>
       <p>
         Ever wanted to launch a chubby Rainbow Dash from a slingshot, then Sonic Rainboom through a wall to destroy Queen Chrysalis? Well, if you have Google Chrome or Firefox, now you can, with a simple, open-source browser extension!
+      </p>      
+      <h3>Screenshots</h3>
+      <p>
+        <img class="screenshot" src="screenshots/screen0.jpg" />
+        <img class="screenshot" src="screenshots/screen1.jpg" />
+        <img class="screenshot" src="screenshots/screen2.jpg" />
       </p>
+      <h3>More Information</h3>
       <p>
         Chubby pony graphics from <a id="artist0" href="http://phantomdarklover.deviantart.com/gallery/#/d4bdizq">PhantomDarkLover</a> and <a id="artist1" href="http://willdrawforfood1.deviantart.com/art/Chrysallis-Chubbie-298667674">WillDrawForFood</a>. Intro music by <a href="http://www.youtube.com/watch?v=2R677MV--WI">Alex S</a>. Code released to the public domain.
       </p>
@@ -108,12 +123,6 @@
       </p>
       <p>
         If you'd like to contribute artwork or sound design to make this more awesome (please do!), or would like to port the extension to a different browser, all instructions on how to contribute are at <a href="https://github.com/bpartridge/angryponies#angry-ponies" id="git-inline">Github</a>. Instructions for non-technical bronies as well!
-      </p>
-      <p>
-        <h3>Screenshots</h3>
-        <img class="screenshot" src="screenshots/screen0.jpg" />
-        <img class="screenshot" src="screenshots/screen1.jpg" />
-        <img class="screenshot" src="screenshots/screen2.jpg" />
       </p>
       <div id="disqus_thread"></div>
       <script type="text/javascript">
