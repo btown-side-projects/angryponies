@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Angry Ponies" />
+    <meta property="og:type" content="game" />
+    <meta property="og:url" content="http://angryponies.herokuapp.com" />
+    <meta property="og:image" content="http://angryponies.herokuapp.com/images/title.png" />
+    <meta property="og:site_name" content="Angry Ponies" />
+    <meta property="og:description" content="Angry Birds, but 20% cooler. Play in your web browser, no downloads required!" />
+
     <title>Angry Ponies PRE-ALPHA DEMO</title>
     <link rel="stylesheet" type="text/css" href="site/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="site/bootstrap-responsive.min.css">
@@ -51,13 +58,29 @@
     </script>
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=397533346953407";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
     <div class="container">
       <header>
         <p>
           <img id="title" src="images/title.png" alt="Angry Ponies" />
         </p>
-        <h1>Angry Ponies <small>PRE-ALPHA DEMO</small></h1>
-        <p>Angry Birds, but 20% cooler. For Google Chrome and Firefox.</p>
+        <div class="row">
+          <div class="span4">
+            <h1>Angry Ponies <small>PRE-ALPHA DEMO</small></h1>
+            <p>Angry Birds, but 20% cooler. For Google Chrome and Firefox.</p>
+          </div>
+          <div class="span8">
+            <div class="fb-like" data-href="http://angryponies.herokuapp.com" data-send="false" data-width="450" data-show-faces="false"></div>
+          </div>
+        </div>
       </header>
       <div class="row show-grid">
         <div class="span6">
