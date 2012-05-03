@@ -1,5 +1,5 @@
 (function() {
-  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, STYLE, ifrm, imgs, objs, remapUrl, remaps, rq, scriptSrc, text, win, _ref;
+  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, STYLE, clearTimeouts, ifrm, imgs, objs, remapUrl, remaps, rq, scriptSrc, text, win, _ref;
 
   HOST = JS_HOST = (_ref = window.top.location.hash) != null ? _ref.substring(1) : void 0;
 
@@ -23,10 +23,53 @@
 
   window.PONIFY_LOADED = true;
 
+  
+  window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame    || 
+      window.webkitRequestAnimationFrame || 
+      window.mozRequestAnimationFrame  || 
+      window.oRequestAnimationFrame   || 
+      window.msRequestAnimationFrame   || 
+      function(/* function */ callback, /* DOMElement */ element){
+        return window.setTimeout(callback, 1000 / 60);
+      };
+  })();
+  window.cancelRequestAnimFrame = ( function() {
+    return window.cancelAnimationFrame     ||
+      window.webkitCancelRequestAnimationFrame  ||
+      window.mozCancelRequestAnimationFrame    ||
+      window.oCancelRequestAnimationFrame   ||
+      window.msCancelRequestAnimationFrame    ||
+      clearTimeout
+  } )();
+;
+
   if (document.body) {
     document.head.innerHTML = "";
     STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%";
     document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='" + STYLE + "' />";
+    (clearTimeouts = function() {
+      var arg, clearer, creator, next, timeoutFuncPairs, _i, _len, _ref2, _results;
+      timeoutFuncPairs = [['setTimeout', 'clearTimeout', 1000], ['setInterval', 'clearInterval', 1000], ['requestAnimFrame', 'cancelRequestAnimFrame', document]];
+      _results = [];
+      for (_i = 0, _len = timeoutFuncPairs.length; _i < _len; _i++) {
+        _ref2 = timeoutFuncPairs[_i], creator = _ref2[0], clearer = _ref2[1], arg = _ref2[2];
+        next = window[creator]((function() {
+          return 0;
+        }), arg);
+        console.log("Removing " + creator + " below " + next);
+        _results.push((function() {
+          var _results2;
+          _results2 = [];
+          while (next >= 0) {
+            window[clearer](next);
+            _results2.push(next -= 1);
+          }
+          return _results2;
+        })());
+      }
+      return _results;
+    })();
     ifrm = document.getElementById('ponified');
     win = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
     scriptSrc = JS_HOST + '/ponify.js';

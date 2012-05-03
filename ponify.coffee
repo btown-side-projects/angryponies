@@ -16,13 +16,46 @@ if window.PONIFY_LOADED
   return
 window.PONIFY_LOADED = true
 
+# Setting up requestAnimationFrame stuff
+`
+  window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame    || 
+      window.webkitRequestAnimationFrame || 
+      window.mozRequestAnimationFrame  || 
+      window.oRequestAnimationFrame   || 
+      window.msRequestAnimationFrame   || 
+      function(/* function */ callback, /* DOMElement */ element){
+        return window.setTimeout(callback, 1000 / 60);
+      };
+  })();
+  window.cancelRequestAnimFrame = ( function() {
+    return window.cancelAnimationFrame     ||
+      window.webkitCancelRequestAnimationFrame  ||
+      window.mozCancelRequestAnimationFrame    ||
+      window.oCancelRequestAnimationFrame   ||
+      window.msCancelRequestAnimationFrame    ||
+      clearTimeout
+  } )();
+`
+
 if document.body
   # Ponify is being called too late to inject code,
   # so "refresh" the page using an iframe
-  # TODO: remove all timeouts and intervals
   document.head.innerHTML=""
   STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%"
   document.body.innerHTML="<iframe id='ponified' src='about:blank' style='#{STYLE}' />"
+  do clearTimeouts = ->
+    timeoutFuncPairs = [
+      ['setTimeout', 'clearTimeout', 1000],
+      ['setInterval', 'clearInterval', 1000],
+      ['requestAnimFrame', 'cancelRequestAnimFrame', document],
+    ]
+    for [creator, clearer, arg] in timeoutFuncPairs
+      next = window[creator]((-> 0), arg)
+      console.log "Removing #{creator} below #{next}"
+      while next >= 0
+        window[clearer](next)
+        next -= 1
   ifrm = document.getElementById('ponified')
   win = `(ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument`
   scriptSrc = JS_HOST + '/ponify.js'
