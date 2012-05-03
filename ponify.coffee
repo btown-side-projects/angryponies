@@ -111,6 +111,7 @@ remaps =
   'sounds/alexsglitch.mp3': /theme\.mp3/
   'flash/CustomVoices.swf': /oices\.swf/
   'images/INGAME_MENU_MAIN_MENU_pony.png': /INGAME_MENU_MAIN_MENU\.png/
+  'images/INGAME_MENU_LEVEL_SELECTION_pony.png': /INGAME_MENU_LEVEL_SELECTION\.png/,
   'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/
   'images/splash.jpg': /Splash_AB_Logo/
 
