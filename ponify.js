@@ -1,5 +1,5 @@
 (function() {
-  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, STYLE, clearTimeouts, ifrm, imgs, objs, remapUrl, remaps, rq, scriptSrc, text, win, _ref;
+  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, imgs, is_chrome, loadElem, objs, reloadWindow, remapUrl, remaps, _ref;
 
   HOST = JS_HOST = (_ref = window.top.location.hash) != null ? _ref.substring(1) : void 0;
 
@@ -44,7 +44,8 @@
   } )();
 ;
 
-  if (document.body) {
+  reloadWindow = function() {
+    var STYLE, clearTimeouts, ifrm, rq, scriptSrc, text, win;
     document.head.innerHTML = "";
     STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%";
     document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='" + STYLE + "' />";
@@ -79,7 +80,20 @@
     text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head');
     win.document.open();
     win.document.write(text);
-    win.document.close();
+    return win.document.close();
+  };
+
+  if (document.body) {
+    is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    if (is_chrome) {
+      reloadWindow();
+    } else {
+      loadElem = document.createElement('h1');
+      loadElem.setAttribute("style", "position:fixed; top:0; left:0;");
+      loadElem.innerHTML = "Loading Angry Ponies, please wait...";
+      document.body.appendChild(loadElem, document.body.firstChild);
+      setTimeout(reloadWindow, 5000);
+    }
     return;
   }
 

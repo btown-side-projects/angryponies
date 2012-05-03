@@ -38,7 +38,7 @@ window.PONIFY_LOADED = true
   } )();
 `
 
-if document.body
+reloadWindow = ->
   # Ponify is being called too late to inject code,
   # so "refresh" the page using an iframe
   document.head.innerHTML=""
@@ -66,6 +66,19 @@ if document.body
   win.document.open()
   win.document.write(text)
   win.document.close()
+
+if document.body
+  is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1
+  if is_chrome
+    reloadWindow()
+  else
+    # On firefox, and possibly other browsers, if the window is reloaded too quickly,
+    # there is a strange "o.body is null" bug. Wait for a few seconds to avoid this more often.
+    loadElem = document.createElement 'h1'
+    loadElem.setAttribute "style", "position:fixed; top:0; left:0;"
+    loadElem.innerHTML = "Loading Angry Ponies, please wait..."
+    document.body.appendChild(loadElem, document.body.firstChild)
+    setTimeout reloadWindow, 5000
   return
 
 # Mixpanel integration
