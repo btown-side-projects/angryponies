@@ -8,11 +8,30 @@
     <link rel="stylesheet" type="text/css" href="site/bootstrap-responsive.min.css">
     <style type="text/css">
       .container p {padding-bottom: 10px;}
+      h2 {padding-top: 10px; padding-bottom: 10px;}
       img.screenshot {height:150px;}
       /*footer {position: fixed; bottom: 5px;}*/
       footer {padding-bottom: 10px;}
       footer > * {margin-right: 10px;}
       footer img {height: 20px;}
+      /* Special grid styles */
+      .show-grid {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .show-grid [class*="span"] {
+        background-color: #eee;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        min-height: 30px;
+        line-height: 30px;
+        padding-left: 10px;
+        margin-right: -10px;
+      }
+      .show-grid [class*="span"]:hover {
+        background-color: #ddd;
+      }
     </style>
     <script type="text/javascript">
       (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
@@ -27,7 +46,7 @@
       )(document,[]);
       mixpanel.init("1b8facd51b0e1f8587251d8a7825f935");
       mixpanel.track("loaded", {referrer: document.referrer});
-      mixpanel.track_links("a", "clicked link", function(ele) {
+      mixpanel.track_links("a.track", "clicked link", function(ele) {
         return {id: ele.id, href: ele.getAttribute('href'), referrer: document.referrer};
       });
     </script>
@@ -41,19 +60,43 @@
         <h1>Angry Ponies <small>PRE-ALPHA DEMO</small></h1>
         <p>Angry Birds, but 20% cooler. For Google Chrome and Firefox.</p>
       </header>
-      <p>
-        <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
-          Step 1: Install the Google Chrome extension.
-        </a>
-        <a id="firefox_ext" class="btn btn-info" href="dist/angryponies.xpi">
-          Or the (experimental) Firefox add-on!
-        </a>
-      </p>
-      <p>
-        <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com" target="_blank">
-          Step 2: Play Angry Ponies!
-        </a>
-      </p>
+      <div class="row show-grid">
+        <div class="span6">
+          <h2>Option 1: Browser Extension</h2>
+          <p>
+            <a id="chrome_ext" class="btn btn-primary" href="dist/angryponies.crx">
+              Step 1: Install the Google Chrome extension.
+            </a>
+            <a id="firefox_ext" class="btn btn-info" href="dist/angryponies.xpi">
+              Or the (experimental) Firefox add-on!
+            </a>
+          </p>
+          <p>
+            <a id="play" class="btn btn-success" href="http://chrome.angrybirds.com" target="_blank" class="track">
+              Step 2: Play Angry Ponies at chrome.angrybirds.com!
+            </a>
+          </p>
+        </div>
+        <div class="span6">
+          <h2>Option 2: Bookmarklet</h2>
+          <p>
+            <a id="bookmarklet" class="btn btn-primary"
+              href="#need-javascript-enabled"
+              onclick="javascript:event.returnValue=false; return false;">
+              Angry Ponies!
+            </a>
+            &larr; Drag to your bookmarks bar!
+          </p>
+          <p>
+            Then, click it in your bookmarks bar twice: once on this page to go to <a id="bookmarklet_ab_link" href="#need-javascript-enabled">chrome.angrybirds.com</a>, and again when you're there to refresh it with pony content!
+          </p>
+          <p>
+            <small>
+              If you're having trouble dragging the bookmarklet to your bookmarks bar, <a id="pinterest_tuts" target="angryponies_pinterest_tuts" href="http://www.youtube.com/user/pinterest/videos">Pinterest has video tutorials for all modern browsers</a>.
+            </small>
+          </p>
+        </div>
+      </div>
       <p>
         Ever wanted to launch a chubby Rainbow Dash from a slingshot, then Sonic Rainboom through a wall to destroy Queen Chrysalis? Well, if you have Google Chrome or Firefox, now you can, with a simple, open-source browser extension!
       </p>
@@ -102,7 +145,16 @@
         document.getElementById("play").setAttribute("href", 
           "http://chrome.angrybirds.com#" + 
           (location.protocol + '//' + location.host));
+        window.location.hash = (location.protocol + '//' + location.host);
       }
+
+      // Override mixpanel's onclick handler to cancel
+      document.getElementById('bookmarklet').setAttribute('onclick', "javascript:alert('Drag me to your bookmarks bar!');return false;");
+
+      var rq = new XMLHttpRequest; rq.open('get', 'bookmarklet.js', false);
+      rq.send();
+      document.getElementById('bookmarklet').setAttribute('href', 'javascript:void((function() {' + rq.responseText + '})())');
+      document.getElementById('bookmarklet_ab_link').setAttribute('href', 'javascript:void((function() {' + rq.responseText + '})())');
     </script>
   </body>
 </html>

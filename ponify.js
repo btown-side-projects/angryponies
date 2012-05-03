@@ -1,11 +1,44 @@
 (function() {
-  var HOST, imgs, objs, remapUrl, remaps, _ref;
+  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, STYLE, ifrm, imgs, objs, remapUrl, remaps, rq, scriptSrc, text, win, _ref;
+
+  HOST = JS_HOST = (_ref = window.top.location.hash) != null ? _ref.substring(1) : void 0;
+
+  HOST_IS_URL = /http:\/\/[\w\.]+/.test(HOST);
+
+  if (!HOST_IS_URL) {
+    HOST = "http://daxq60ud3wnx1.cloudfront.net";
+    JS_HOST = "http://angryponies.herokuapp.com";
+  }
+
+  AB_HOST = 'chrome.angrybirds.com';
+
+  if (document.domain !== AB_HOST) {
+    if (confirm("Redirecting to " + AB_HOST + "! Don't forget to click the bookmarklet again once you get there!")) {
+      window.location = "http://" + AB_HOST + "/" + (HOST_IS_URL ? '#' + HOST : '');
+    }
+    return;
+  }
 
   if (window.PONIFY_LOADED) return;
 
   window.PONIFY_LOADED = true;
 
-  HOST = ((_ref = location.hash) != null ? _ref.substring(1) : void 0) || "http://daxq60ud3wnx1.cloudfront.net";
+  if (document.body) {
+    document.head.innerHTML = "";
+    STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%";
+    document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='" + STYLE + "' />";
+    ifrm = document.getElementById('ponified');
+    win = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
+    scriptSrc = JS_HOST + '/ponify.js';
+    rq = new XMLHttpRequest;
+    rq.open('get', '', false);
+    rq.send();
+    text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head');
+    win.document.open();
+    win.document.write(text);
+    win.document.close();
+    return;
+  }
 
   
   (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";

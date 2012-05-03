@@ -1,9 +1,39 @@
+# This is the cloudfront endpoint for angryponies.herokuapp.com
+HOST = JS_HOST = window.top.location.hash?.substring(1)
+HOST_IS_URL = /http:\/\/[\w\.]+/.test(HOST)
+if not HOST_IS_URL
+  HOST = "http://daxq60ud3wnx1.cloudfront.net"
+  JS_HOST = "http://angryponies.herokuapp.com"
+
+AB_HOST = 'chrome.angrybirds.com'
+
+if document.domain != AB_HOST
+  if confirm "Redirecting to #{AB_HOST}! Don't forget to click the bookmarklet again once you get there!"
+    window.location = "http://#{AB_HOST}/#{if HOST_IS_URL then '#'+HOST else ''}"
+  return
+
 if window.PONIFY_LOADED
   return
 window.PONIFY_LOADED = true
 
-# This is the cloudfront endpoint for angryponies.herokuapp.com
-HOST = location.hash?.substring(1) || "http://daxq60ud3wnx1.cloudfront.net"
+if document.body
+  # Ponify is being called too late to inject code,
+  # so "refresh" the page using an iframe
+  # TODO: remove all timeouts and intervals
+  document.head.innerHTML=""
+  STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%"
+  document.body.innerHTML="<iframe id='ponified' src='about:blank' style='#{STYLE}' />"
+  ifrm = document.getElementById('ponified')
+  win = `(ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument`
+  scriptSrc = JS_HOST + '/ponify.js'
+  rq = new XMLHttpRequest
+  rq.open('get', '', false)
+  rq.send()
+  text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head')
+  win.document.open()
+  win.document.write(text)
+  win.document.close()
+  return
 
 # Mixpanel integration
 `
