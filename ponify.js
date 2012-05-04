@@ -123,6 +123,7 @@
     'images/INGAME_MENU_MAIN_MENU_pony.png': /INGAME_MENU_MAIN_MENU\.png/,
     'images/INGAME_MENU_LEVEL_SELECTION_pony.png': /INGAME_MENU_LEVEL_SELECTION\.png/,
     'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/,
+    'images/INGAME_MENU_EPISODE_SELECTION.png': /INGAME_MENU_EPISODE_SELECTION.png/,
     'images/splash.jpg': /Splash_AB_Logo/
   };
 
