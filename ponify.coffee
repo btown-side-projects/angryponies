@@ -182,5 +182,5 @@ do ->
     for adId in ['right-banner','left-banner']
       ad = document.getElementById(adId)
       # if ad then ad.parentNode.removeChild(ad)
-      if ad then ad.setAttribute('style', 'visiblity:hidden;');
+      if ad then ad.setAttribute('style', 'visiblity:hidden; display:none;');
   setInterval adRemover, 1000

@@ -219,7 +219,7 @@
         adId = _ref2[_i];
         ad = document.getElementById(adId);
         if (ad) {
-          _results.push(ad.setAttribute('style', 'visiblity:hidden;'));
+          _results.push(ad.setAttribute('style', 'visiblity:hidden; display:none;'));
         } else {
           _results.push(void 0);
         }
