@@ -1,5 +1,22 @@
 (function() {
-  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, imgs, is_chrome, loadElem, objs, reloadWindow, remapUrl, remaps, _ref;
+  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, imgs, is_chrome, loadElem, newLocation, objs, reloadWindow, remapUrl, remaps, _ref;
+
+  if (window.PONIFY_LOADED) return;
+
+  window.PONIFY_LOADED = true;
+
+  
+  (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
+  a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
+  '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
+  b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
+  "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
+  'track_links','track_forms','register','register_once','unregister','identify',
+  'name_tag','set_config'];
+  for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
+  Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
+  )(document,[]);
+  mixpanel.init("1b8facd51b0e1f8587251d8a7825f935", {debug: true});;
 
   HOST = JS_HOST = (_ref = window.top.location.hash) != null ? _ref.substring(1) : void 0;
 
@@ -14,14 +31,15 @@
 
   if (document.domain !== AB_HOST) {
     if (confirm("Redirecting to " + AB_HOST + "! Don't forget to click the bookmarklet again once you get there!")) {
-      window.location = "http://" + AB_HOST + "/" + (HOST_IS_URL ? '#' + HOST : '');
+      newLocation = "http://" + AB_HOST + "/" + (HOST_IS_URL ? '#' + HOST : '');
+      mixpanel.track("ponify_redirect", {
+        ponify_target_location: newLocation,
+        ponify_start_location: window.location.toString()
+      });
+      window.location = newLocation;
     }
     return;
   }
-
-  if (window.PONIFY_LOADED) return;
-
-  window.PONIFY_LOADED = true;
 
   
   window.requestAnimFrame = (function(){
@@ -46,6 +64,7 @@
 
   reloadWindow = function() {
     var STYLE, clearTimeouts, ifrm, rq, scriptSrc, text, win;
+    mixpanel.track("ponify_reload");
     document.head.innerHTML = "";
     STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%";
     document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='" + STYLE + "' />";
@@ -98,21 +117,11 @@
     return;
   }
 
-  
-  (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
-  a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
-  '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
-  b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
-  "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
-  'track_links','track_forms','register','register_once','unregister','identify',
-  'name_tag','set_config'];
-  for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
-  Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
-  )(document,[]);
-  mixpanel.init("1b8facd51b0e1f8587251d8a7825f935");
-  mixpanel.track("ponify", {ponify_host: HOST});
-
   console.log("Angry Ponies: remapping to " + HOST);
+
+  mixpanel.track('ponify', {
+    ponify_host: HOST
+  });
 
   remaps = {
     'images/mane6.png': /INGAME_BIRDS\.png/,
@@ -198,6 +207,26 @@
       newUrl = remapUrl(url);
       return this.realOpen(method, newUrl, async, user, pass);
     };
+  })();
+
+  (function() {
+    var adRemover;
+    adRemover = function() {
+      var ad, adId, _i, _len, _ref2, _results;
+      _ref2 = ['right-banner', 'left-banner'];
+      _results = [];
+      for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
+        adId = _ref2[_i];
+        ad = document.getElementById(adId);
+        if (ad) {
+          _results.push(ad.parentNode.removeChild(ad));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
+    };
+    return setInterval(adRemover, 1000);
   })();
 
 }).call(this);

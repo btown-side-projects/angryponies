@@ -1,7 +1,25 @@
-# This is the cloudfront endpoint for angryponies.herokuapp.com
+if window.PONIFY_LOADED
+  return
+window.PONIFY_LOADED = true
+
+# Mixpanel integration
+`
+  (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
+  a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
+  '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
+  b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
+  "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
+  'track_links','track_forms','register','register_once','unregister','identify',
+  'name_tag','set_config'];
+  for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
+  Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
+  )(document,[]);
+  mixpanel.init("1b8facd51b0e1f8587251d8a7825f935", {debug: true});`
+
 HOST = JS_HOST = window.top.location.hash?.substring(1)
 HOST_IS_URL = /http:\/\/[\w\.]+/.test(HOST)
 if not HOST_IS_URL
+  # This is the cloudfront endpoint for angryponies.herokuapp.com
   HOST = "http://daxq60ud3wnx1.cloudfront.net"
   JS_HOST = "http://angryponies.herokuapp.com"
 
@@ -9,12 +27,10 @@ AB_HOST = 'chrome.angrybirds.com'
 
 if document.domain != AB_HOST
   if confirm "Redirecting to #{AB_HOST}! Don't forget to click the bookmarklet again once you get there!"
-    window.location = "http://#{AB_HOST}/#{if HOST_IS_URL then '#'+HOST else ''}"
+    newLocation = "http://#{AB_HOST}/#{if HOST_IS_URL then '#'+HOST else ''}"
+    mixpanel.track("ponify_redirect", {ponify_target_location: newLocation, ponify_start_location: window.location.toString()})
+    window.location = newLocation
   return
-
-if window.PONIFY_LOADED
-  return
-window.PONIFY_LOADED = true
 
 # Setting up requestAnimationFrame stuff
 `
@@ -39,6 +55,7 @@ window.PONIFY_LOADED = true
 `
 
 reloadWindow = ->
+  mixpanel.track("ponify_reload")
   # Ponify is being called too late to inject code,
   # so "refresh" the page using an iframe
   document.head.innerHTML=""
@@ -63,6 +80,8 @@ reloadWindow = ->
   rq.open('get', '', false)
   rq.send()
   text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head')
+  text = text.replace('src="/images/loading_image_bird.png"', 'src="' + HOST + '/images/loading_image_bird.png"')
+  # console.log text
   win.document.open()
   win.document.write(text)
   win.document.close()
@@ -81,22 +100,8 @@ if document.body
     setTimeout reloadWindow, 5000
   return
 
-# Mixpanel integration
-`
-  (function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";
-  a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+
-  '//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];
-  b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;
-  "undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g=['disable','track','track_pageview',
-  'track_links','track_forms','register','register_once','unregister','identify',
-  'name_tag','set_config'];
-  for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
-  Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
-  )(document,[]);
-  mixpanel.init("1b8facd51b0e1f8587251d8a7825f935");
-  mixpanel.track("ponify", {ponify_host: HOST})`
-
 console.log "Angry Ponies: remapping to #{HOST}"
+mixpanel.track('ponify', {ponify_host: HOST})
 
 remaps =
   # 'images/INGAME_BIRDS_ponies.png': /INGAME_BIRDS\.png/
@@ -115,7 +120,7 @@ remaps =
   'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/
   'images/INGAME_MENU_EPISODE_SELECTION.png': /INGAME_MENU_EPISODE_SELECTION.png/
   'images/splash.jpg': /Splash_AB_Logo/
-  'images/loading_image_bird.png': /loading_image_bird/
+  # 'images/loading_image_bird.png': /Splash_Rovio_Logo.png/
 
 remapUrl = (url) ->
   # [match, host, rest] = /^http:\/\/([^\/]+)(\/?.*)$/.exec url
@@ -142,12 +147,6 @@ do ->
         if img.src != newSrc
           img.src = newSrc
       imgs = []
-    # if objs.length
-    #   for obj in objs
-    #     window.fetchedUrls.push(obj)
-    #     newData = remapUrl(obj.getAttribute('data'))
-    #     obj.setAttribute('data', newData)
-    #   objs = []
   setInterval laterRemapper, 2
 
 do ->
@@ -168,22 +167,6 @@ do ->
     # TODO: handle type == 'param' and ensure overriding allowScriptAccess
     return elem
 
-# do ->
-#   gwtVoiceId = 'gwtVoices1000'
-#   gwtVoices = null
-#   movie = null
-#   loaded = false
-#   voicesFinder = ->
-#     return if loaded
-#     if gwtVoices
-#       if not gwtVoices.createSound # not yet loaded
-#         gwtVoices.setAttribute 'data', HOST + '/flash/CustomVoices.swf'
-#         loaded = true
-#     else
-#       gwtVoices = document.getElementById gwtVoiceId
-#       movie = document.VoicesMovie
-#   setInterval voicesFinder, 10
-
 do ->
   proto = XMLHttpRequest.prototype
   proto.realOpen = proto.open
@@ -192,3 +175,11 @@ do ->
     newUrl = remapUrl(url)
     # console.log url, newUrl
     return this.realOpen(method, newUrl, async, user, pass)
+
+# Remove ads, because we can...
+do ->
+  adRemover = ->
+    for adId in ['right-banner','left-banner']
+      ad = document.getElementById(adId)
+      if ad then ad.parentNode.removeChild(ad)
+  setInterval adRemover, 1000

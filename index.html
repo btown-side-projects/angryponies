@@ -50,7 +50,7 @@
       for(e=0;e<g.length;e++)(function(a){b[a]=function(){b.push([a].concat(
       Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c}
       )(document,[]);
-      mixpanel.init("1b8facd51b0e1f8587251d8a7825f935");
+      mixpanel.init("1b8facd51b0e1f8587251d8a7825f935", {debug: true});
       mixpanel.track("loaded", {referrer: document.referrer});
       mixpanel.track_links("a.track", "clicked link", function(ele) {
         return {id: ele.id, href: ele.getAttribute('href'), referrer: document.referrer};
@@ -181,11 +181,15 @@
       }
 
       // Override mixpanel's onclick handler to cancel
-      document.getElementById('bookmarklet').setAttribute('onclick', "javascript:alert('Drag me to your bookmarks bar!');return false;");
+      var bookmarklet = document.getElementById('bookmarklet');
+      bookmarklet.setAttribute('onclick', "javascript:alert('Drag me to your bookmarks bar!');return false;");
+      bookmarklet.onmousedown = function() {
+        mixpanel.track("bookmarklet pressed")
+      }
 
       var rq = new XMLHttpRequest; rq.open('get', 'bookmarklet.js', false);
       rq.send();
-      document.getElementById('bookmarklet').setAttribute('href', 'javascript:void((function() {' + rq.responseText + '})())');
+      bookmarklet.setAttribute('href', 'javascript:void((function() {' + rq.responseText + '})())');
       document.getElementById('bookmarklet_ab_link').setAttribute('href', 'javascript:void((function() {' + rq.responseText + '})())');
     </script>
   </body>
