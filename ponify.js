@@ -124,7 +124,8 @@
     'images/INGAME_MENU_LEVEL_SELECTION_pony.png': /INGAME_MENU_LEVEL_SELECTION\.png/,
     'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/,
     'images/INGAME_MENU_EPISODE_SELECTION.png': /INGAME_MENU_EPISODE_SELECTION.png/,
-    'images/splash.jpg': /Splash_AB_Logo/
+    'images/splash.jpg': /Splash_AB_Logo/,
+    'images/loading_image_bird.png': /loading_image_bird/
   };
 
   remapUrl = function(url) {
