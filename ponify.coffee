@@ -51,16 +51,16 @@ if document.domain != AB_HOST
       window.oCancelRequestAnimationFrame   ||
       window.msCancelRequestAnimationFrame    ||
       clearTimeout
-  } )();
-`
+  })()`
 
 reloadWindow = ->
   mixpanel.track("ponify_reload")
   # Ponify is being called too late to inject code,
   # so "refresh" the page using an iframe
-  document.head.innerHTML=""
+  # document.head.innerHTML=""
   STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%"
-  document.body.innerHTML="<iframe id='ponified' src='about:blank' style='#{STYLE}' />"
+  document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='#{STYLE}' />" +
+    "<div id='ingameframecontainer'></div>"
   do clearTimeouts = ->
     timeoutFuncPairs = [
       ['setTimeout', 'clearTimeout', 1000],
@@ -77,27 +77,36 @@ reloadWindow = ->
   win = `(ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument`
   scriptSrc = JS_HOST + '/ponify.js?' + Math.random()
   rq = new XMLHttpRequest
-  rq.open('get', '', false)
+  rq.open('get', window.location.toString(), false)
   rq.send()
+
+  # Add the ponify shim
   text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head')
+  # The great and powerful loading_image_bird.png!
   text = text.replace('src="/images/loading_image_bird.png"', 'src="' + HOST + '/images/loading_image_bird.png"')
+  # Move fowl to the body, otherwise, in Firefox, document.body is null while fowl is executing in the iframe head
+  # TODO: make the string search more robust
+  fowlText = '<script type="text/javascript" src="fowl/fowl.nocache.js"></script>'
+  text = text.replace(fowlText, '').replace('<body>', '<body>' + fowlText);
+  
   # console.log text
   win.document.open()
   win.document.write(text)
   win.document.close()
 
 if document.body
-  is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1
-  if is_chrome
-    reloadWindow()
-  else
-    # On firefox, and possibly other browsers, if the window is reloaded too quickly,
-    # there is a strange "o.body is null" bug. Wait for a few seconds to avoid this more often.
-    loadElem = document.createElement 'h1'
-    loadElem.setAttribute "style", "position:fixed; top:0; left:0;"
-    loadElem.innerHTML = "Loading Angry Ponies, please wait..."
-    document.body.appendChild(loadElem, document.body.firstChild)
-    setTimeout reloadWindow, 5000
+  # is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1
+  # if is_chrome
+  #   reloadWindow()
+  # else
+  #   # On firefox, and possibly other browsers, if the window is reloaded too quickly,
+  #   # there is a strange "o.body is null" bug. Wait for a few seconds to avoid this more often.
+  #   loadElem = document.createElement 'h1'
+  #   loadElem.setAttribute "style", "position:fixed; top:0; left:0;"
+  #   loadElem.innerHTML = "Loading Angry Ponies, please wait..."
+  #   document.body.appendChild(loadElem, document.body.firstChild)
+  #   setTimeout reloadWindow, 5000
+  reloadWindow()
   return
 
 console.log "Angry Ponies: remapping to #{HOST}"
@@ -183,4 +192,4 @@ do ->
       ad = document.getElementById(adId)
       # if ad then ad.parentNode.removeChild(ad)
       if ad then ad.setAttribute('style', 'visiblity:hidden; display:none;');
-  setInterval adRemover, 1000
+  setInterval adRemover, 100

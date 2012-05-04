@@ -1,5 +1,5 @@
 (function() {
-  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, imgs, is_chrome, loadElem, newLocation, objs, reloadWindow, remapUrl, remaps, _ref;
+  var AB_HOST, HOST, HOST_IS_URL, JS_HOST, imgs, newLocation, objs, reloadWindow, remapUrl, remaps, _ref;
 
   if (window.PONIFY_LOADED) return;
 
@@ -59,15 +59,13 @@
       window.oCancelRequestAnimationFrame   ||
       window.msCancelRequestAnimationFrame    ||
       clearTimeout
-  } )();
-;
+  })();
 
   reloadWindow = function() {
-    var STYLE, clearTimeouts, ifrm, rq, scriptSrc, text, win;
+    var STYLE, clearTimeouts, fowlText, ifrm, rq, scriptSrc, text, win;
     mixpanel.track("ponify_reload");
-    document.head.innerHTML = "";
     STYLE = "border: 0; position:absolute; top:0; left:0; right:0; bottom:0; width:100%; height:100%";
-    document.body.innerHTML = "<iframe id='ponified' src='about:blank' style='" + STYLE + "' />";
+    document.body.innerHTML = ("<iframe id='ponified' src='about:blank' style='" + STYLE + "' />") + "<div id='ingameframecontainer'></div>";
     (clearTimeouts = function() {
       var arg, clearer, creator, next, timeoutFuncPairs, _i, _len, _ref2, _results;
       timeoutFuncPairs = [['setTimeout', 'clearTimeout', 1000], ['setInterval', 'clearInterval', 1000], ['requestAnimFrame', 'cancelRequestAnimFrame', document]];
@@ -94,26 +92,19 @@
     win = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
     scriptSrc = JS_HOST + '/ponify.js?' + Math.random();
     rq = new XMLHttpRequest;
-    rq.open('get', '', false);
+    rq.open('get', window.location.toString(), false);
     rq.send();
     text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head');
     text = text.replace('src="/images/loading_image_bird.png"', 'src="' + HOST + '/images/loading_image_bird.png"');
+    fowlText = '<script type="text/javascript" src="fowl/fowl.nocache.js"></script>';
+    text = text.replace(fowlText, '').replace('<body>', '<body>' + fowlText);
     win.document.open();
     win.document.write(text);
     return win.document.close();
   };
 
   if (document.body) {
-    is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
-    if (is_chrome) {
-      reloadWindow();
-    } else {
-      loadElem = document.createElement('h1');
-      loadElem.setAttribute("style", "position:fixed; top:0; left:0;");
-      loadElem.innerHTML = "Loading Angry Ponies, please wait...";
-      document.body.appendChild(loadElem, document.body.firstChild);
-      setTimeout(reloadWindow, 5000);
-    }
+    reloadWindow();
     return;
   }
 
@@ -226,7 +217,7 @@
       }
       return _results;
     };
-    return setInterval(adRemover, 1000);
+    return setInterval(adRemover, 100);
   })();
 
 }).call(this);
