@@ -193,3 +193,10 @@ do ->
       # if ad then ad.parentNode.removeChild(ad)
       if ad then ad.setAttribute('style', 'visiblity:hidden; display:none;');
   setInterval adRemover, 100
+
+# Add Angry Ponies appcache
+do ->
+  installerFrame = document.createElement 'iframe'
+  installerFrame.src = HOST + '/appcache/installer.html'
+  installerFrame.style.display = 'none'
+  document.body.appendChild(installerFrame)

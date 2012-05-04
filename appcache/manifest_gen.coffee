@@ -1,9 +1,7 @@
 fs = require 'fs'
 
-HOST = 'http://angryponies.herokuapp.com'
-
 fullPath = (path) -> __dirname + '/' + path
-fullUrl  = (path) -> HOST      + '/' + path
+fullUrl  = (path) -> '/' + path
 
 assetUrlsIn = (dir, format) ->
   filenames = fs.readdirSync fullPath('../' + dir)
@@ -21,5 +19,5 @@ urls = urls.concat assetUrlsIn('flash', /\.swf$/)
 urls = urls.concat assetUrlsIn('sounds', /\.mp3$/)
 manifest = manifest.replace "{ASSET_URLS}", urls.join("\n")
 
-fs.writeFile fullPath('fowl.manifest'), manifest
-console.log "Successfully wrote to fowl.manifest"
+fs.writeFile fullPath('angryponies.appcache'), manifest
+console.log "Successfully wrote to angryponies.appcache"

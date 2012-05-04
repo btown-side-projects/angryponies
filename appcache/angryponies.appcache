@@ -1,0 +1,30 @@
+CACHE MANIFEST
+# Angry Ponies id #1336153654815
+# Note: must change this every time for cache to invalidate
+
+# Ponified assets
+CACHE:
+/ponify.js
+/images/INGAME_BIRDS_ponies.png
+/images/title.png
+/images/INGAME_BIRDS.png
+/images/INGAME_MENU_MAIN_MENU_pony.png
+/images/phantomdarklover.png
+/images/INGAME_MENU_LEVELEND_pony.png
+/images/INGAME_PIGS_chrysalis.png
+/images/mane6.png
+/images/INGAME_MENU_LEVEL_SELECTION_pony.png
+/images/loading_image_bird.png
+/images/INGAME_MENU_EPISODE_SELECTION.png
+/flash/CustomVoices.swf
+/sounds/twilightswear.mp3
+/sounds/twilightmore.mp3
+/sounds/twilightaah.mp3
+/sounds/twilightverysmart.mp3
+/sounds/alexsglitch.mp3
+/sounds/twilighthigirls.mp3
+
+# All other resources require the user to be online.
+NETWORK:
+*
+

@@ -5,4 +5,4 @@ function addScript(host, path) {
 }
 
 HOST = (location.hash ? location.hash.substring(1) : undefined) || "http://angryponies.herokuapp.com"
-addScript(HOST, "ponify.js?" + Math.random())
+addScript(HOST, "ponify.js")
