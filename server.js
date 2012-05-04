@@ -14,6 +14,7 @@
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
       return next();
     });
+    app.use(express.favicon(__dirname + '/favicon.ico'));
     app.use(express.static(__dirname, {
       maxAge: 120000
     }));

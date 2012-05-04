@@ -10,6 +10,7 @@ app.configure ->
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "X-Requested-With")
     next()
+  app.use express.favicon __dirname + '/favicon.ico'
   app.use express.static __dirname, {maxAge: 120000}
   app.use app.router
   app.use express.errorHandler
