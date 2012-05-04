@@ -109,8 +109,10 @@
   };
 
   if (document.body) {
-    reloadWindow();
-    return;
+    if ((typeof fowl !== "undefined" && fowl !== null) && !(typeof resumeFowl !== "undefined" && resumeFowl !== null)) {
+      reloadWindow();
+      return;
+    }
   }
 
   console.log("Angry Ponies: remapping to " + HOST);
@@ -231,12 +233,9 @@
     return setInterval(adRemover, 100);
   })();
 
-  (function() {
-    var installerFrame;
-    installerFrame = document.createElement('iframe');
-    installerFrame.src = HOST + '/appcache/installer.html';
-    installerFrame.style.display = 'none';
-    return document.body.appendChild(installerFrame);
-  })();
+  if (typeof resumeFowl !== "undefined" && resumeFowl !== null) {
+    console.log("Resuming fowl");
+    resumeFowl();
+  }
 
 }).call(this);

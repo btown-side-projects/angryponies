@@ -106,8 +106,12 @@ if document.body
   #   loadElem.innerHTML = "Loading Angry Ponies, please wait..."
   #   document.body.appendChild(loadElem, document.body.firstChild)
   #   setTimeout reloadWindow, 5000
-  reloadWindow()
-  return
+  
+  if fowl? && !resumeFowl?
+    # Too late, fowl is already here, and the Chrome extension hasn't paused
+    # it for us. Reload in a magic iframe.
+    reloadWindow()
+    return
 
 console.log "Angry Ponies: remapping to #{HOST}"
 mixpanel.track('ponify', {ponify_host: HOST})
@@ -194,9 +198,7 @@ do ->
       if ad then ad.setAttribute('style', 'visiblity:hidden; display:none;');
   setInterval adRemover, 100
 
-# Add Angry Ponies appcache
-do ->
-  installerFrame = document.createElement 'iframe'
-  installerFrame.src = HOST + '/appcache/installer.html'
-  installerFrame.style.display = 'none'
-  document.body.appendChild(installerFrame)
+# Resume fowl, in case the Chrome extension paused it for us
+if resumeFowl?
+  console.log "Resuming fowl"
+  resumeFowl()
