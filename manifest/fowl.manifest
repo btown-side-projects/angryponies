@@ -1,11 +1,12 @@
 
 CACHE MANIFEST
 # Unique id #1333447631837.0.9469467018911233
-# Angry Ponies id #1336150770520
+# Angry Ponies id #1336151480599
 # Note: must change this every time for cache to invalidate
 
 CACHE:
 # Ponified assets
+http://angryponies.herokuapp.com/ponify.js
 http://angryponies.herokuapp.com/images/INGAME_BIRDS_ponies.png
 http://angryponies.herokuapp.com/images/title.png
 http://angryponies.herokuapp.com/images/INGAME_BIRDS.png
