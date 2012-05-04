@@ -78,6 +78,7 @@
     rq.open('get', '', false);
     rq.send();
     text = rq.responseText.replace('<head', '<script src=' + scriptSrc + '></script><head');
+    text = text.replace('src="/images/loading_image_bird.png"', 'src="' + HOST + '/images/loading_image_bird.png"');
     win.document.open();
     win.document.write(text);
     return win.document.close();
@@ -124,8 +125,7 @@
     'images/INGAME_MENU_LEVEL_SELECTION_pony.png': /INGAME_MENU_LEVEL_SELECTION\.png/,
     'images/INGAME_MENU_LEVELEND_pony.png': /INGAME_MENU_LEVELEND\.png/,
     'images/INGAME_MENU_EPISODE_SELECTION.png': /INGAME_MENU_EPISODE_SELECTION.png/,
-    'images/splash.jpg': /Splash_AB_Logo/,
-    'images/loading_image_bird.png': /loading_image_bird/
+    'images/splash.jpg': /Splash_AB_Logo/
   };
 
   remapUrl = function(url) {
