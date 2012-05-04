@@ -92,7 +92,7 @@
     })();
     ifrm = document.getElementById('ponified');
     win = (ifrm.contentWindow) ? ifrm.contentWindow : (ifrm.contentDocument.document) ? ifrm.contentDocument.document : ifrm.contentDocument;
-    scriptSrc = JS_HOST + '/ponify.js';
+    scriptSrc = JS_HOST + '/ponify.js?' + Math.random();
     rq = new XMLHttpRequest;
     rq.open('get', '', false);
     rq.send();
