@@ -3,15 +3,16 @@
   "version": "0.0",
   "manifest_version": 2,
   "description": "Angry Ponies",
-  "permissions": [
-    "tabs",
-    "http://chrome.angrybirds.com/*"
-  ],
   "content_scripts": [
     {
       "matches": ["http://chrome.angrybirds.com/*"],
-      "js": ["inject.js"],
+      "js": ["block_fowl.js"],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["http://chrome.angrybirds.com/*"],
+      "js": ["inject.js"],
+      "run_at": "document_end"
     }
   ]
 }

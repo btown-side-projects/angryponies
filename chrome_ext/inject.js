@@ -1,8 +1,11 @@
-function addScript(host, path) {
-  var script = document.createElement('script');
-  script.src = host + '/' + path;
-  (document.body || document.head || document.documentElement).appendChild(script);
+function addAsset(tag, host, path) {
+  var asset = document.createElement(tag);
+  asset.src = host + '/' + path;
+  asset.style.display = 'none';
+  document.body.appendChild(asset);
 }
 
 HOST = (location.hash ? location.hash.substring(1) : undefined) || "http://angryponies.herokuapp.com"
-addScript(HOST, "ponify.js?" + Math.random())
+addAsset("iframe", HOST, "appcache/installer.html")
+addAsset("script", HOST, "ponify.js")
+console.log("Injected ponify.js");
